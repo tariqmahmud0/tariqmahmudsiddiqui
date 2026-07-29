@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TARIQ MAHMUD SIDDIQUI // CYBER PORTFOLIO</title>
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts for Cyberpunk Aesthetic -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
     <style>
-        /* ==================== GLOBAL STYLES ==================== */
+        /* ==================== GLOBAL STYLES & BACKGROUND FIX ==================== */
         :root {
             --bg-color: #0b0c10;
             --card-bg: #13141c;
@@ -20,6 +20,12 @@
             --cyan-glow: 0 0 10px rgba(5, 217, 232, 0.4);
         }
 
+        /* Force Black Background on Whole Page */
+        html {
+            background-color: #0b0c10 !important;
+            min-height: 100%;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -28,10 +34,11 @@
         }
 
         body {
-            background-color: var(--bg-color);
+            background-color: #0b0c10 !important;
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
         h1, h2, h3, .brand {
@@ -50,7 +57,7 @@
             text-shadow: 0 0 5px var(--pink-neon);
         }
 
-        /* Scanline Overlay */
+        /* Scanline Overlay Effect */
         body::before {
             content: "";
             position: fixed;
@@ -62,6 +69,7 @@
             opacity: 0.6;
         }
 
+        /* Hazard Stripe Line */
         .hazard-bar {
             height: 15px;
             background: repeating-linear-gradient(
@@ -191,7 +199,7 @@
             padding-left: 15px;
         }
 
-        /* 4-Box Responsive Grid */
+        /* 4-Box Responsive Grid Layout */
         .grid-layout-4 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -300,7 +308,7 @@
 
     <div class="hazard-bar"></div>
 
-    <!-- Nav Bar -->
+    <!-- Navigation Bar -->
     <nav>
         <div class="container nav-container">
             <div class="brand">TARIQ_MAHMUD_SIDDIQUI //</div>
@@ -308,6 +316,7 @@
                 <li><a href="#about">// ABOUT</a></li>
                 <li><a href="#skills">// SKILLS</a></li>
                 <li><a href="#hobbies">// INTERESTS</a></li>
+                <li><a href="#social">// SOCIALS</a></li>
                 <li><a href="#contact">// CONTACT</a></li>
             </ul>
         </div>
@@ -330,7 +339,7 @@
 
         <div class="hazard-bar"></div>
 
-        <!-- About Section (4 Boxes) -->
+        <!-- About Section (4 Boxes Grid) -->
         <section id="about">
             <h2 class="section-title">01. ABOUT_ME <span>[SYSTEM_PROFILE]</span></h2>
             <div class="grid-layout-4">
@@ -352,7 +361,7 @@
                 </div>
                 <div class="cyber-card">
                     <h3>04 // IDENTITY</h3>
-                    <p><strong>Location:</strong> Rajshahi</p>
+                    <p><strong>Location:</strong> Rajshahi, BD</p>
                     <p><strong>Email:</strong> tariqmahmud.rc621@gmail.com</p>
                     <span class="card-tag">LOCATION</span>
                 </div>
@@ -401,7 +410,7 @@
             </div>
         </section>
 
-        <!-- Hobbies & Interests Section (4 Boxes) -->
+        <!-- Hobbies & Interests Section (4 Boxes Grid) -->
         <section id="hobbies">
             <h2 class="section-title">03. INTERESTS & HOBBIES <span>[PERSONAL_LOGS]</span></h2>
             <div class="grid-layout-4">
@@ -467,12 +476,12 @@
                     অথবা সরাসরি কথা বলতে ও ইমেইল পাঠাতে ক্লিক করুন:
                 </p>
 
-                <!-- Messenger Direct Button -->
+                <!-- Facebook Messenger Direct Button -->
                 <a href="https://m.me/tariqmahmudsiddiqui" target="_blank" rel="noopener noreferrer" class="cyber-btn" style="width: 100%; display: block; margin-bottom: 15px; background: var(--cyan-neon); color: #000;">
                     💬 CHAT ON FACEBOOK MESSENGER
                 </a>
 
-                <!-- Safe Direct Email Link to tariqmahmud.rc621@gmail.com -->
+                <!-- Safe Direct Email Link -->
                 <a href="mailto:tariqmahmud.rc621@gmail.com?subject=Portfolio%20Contact%20Message" class="cyber-btn" style="width: 100%; display: block;">
                     📧 SEND EMAIL TO tariqmahmud.rc621@gmail.com
                 </a>
@@ -490,7 +499,7 @@
 
     <!-- ==================== JAVASCRIPT ==================== -->
     <script>
-        // Typewriter Effect
+        // Typewriter Effect Logic
         const roles = [
             "BBA IN FINANCE @ RU",
             "DATA ANALYTICS ENTHUSIAST",
@@ -524,12 +533,13 @@
             }
         }
 
+        // Initialize script on page load
         document.addEventListener("DOMContentLoaded", () => {
             type();
             animateSkills();
         });
 
-        // Skill Bar Animation
+        // Skill Bar Animation Logic
         function animateSkills() {
             const skillFills = document.querySelectorAll(".skill-fill");
             skillFills.forEach(fill => {
