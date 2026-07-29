@@ -9,21 +9,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
     <style>
-        /* ==================== GLOBAL STYLES & BACKGROUND FIX ==================== */
+        /* ==================== GLOBAL STYLES & CYBERPUNK SCROLLBAR ==================== */
         :root {
             --bg-color: #0b0c10;
             --card-bg: #13141c;
             --pink-neon: #ff2a6d;
             --cyan-neon: #05d9e8;
             --text-color: #d1f7ff;
-            --border-glow: 0 0 10px rgba(255, 42, 109, 0.4);
-            --cyan-glow: 0 0 10px rgba(5, 217, 232, 0.4);
         }
 
         /* Force Black Background on Whole Page */
         html {
             background-color: #0b0c10 !important;
             min-height: 100%;
+            scrollbar-width: thin;
+            scrollbar-color: var(--pink-neon) #0b0c10;
+        }
+
+        /* Webkit Browsers Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0b0c10;
+            border-left: 1px solid #13141c;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--pink-neon);
+            border-radius: 0px;
+            border: 1px solid #000;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--cyan-neon);
         }
 
         * {
@@ -39,6 +60,7 @@
             line-height: 1.6;
             overflow-x: hidden;
             min-height: 100vh;
+            word-wrap: break-word;
         }
 
         h1, h2, h3, .brand {
@@ -54,7 +76,6 @@
 
         a:hover {
             color: var(--pink-neon);
-            text-shadow: 0 0 5px var(--pink-neon);
         }
 
         /* Scanline Overlay Effect */
@@ -62,7 +83,7 @@
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%);
             background-size: 100% 4px;
             z-index: 999;
             pointer-events: none;
@@ -110,13 +131,13 @@
             color: var(--pink-neon);
             font-weight: 900;
             letter-spacing: 2px;
-            text-shadow: var(--border-glow);
         }
 
         .nav-links {
             display: flex;
             list-style: none;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
@@ -126,14 +147,13 @@
 
         /* ==================== HERO SECTION ==================== */
         .hero {
-            padding: 70px 0 40px;
+            padding: 60px 0 30px;
             text-align: center;
         }
 
         .hero-box {
             background: var(--card-bg);
             border: 2px solid var(--pink-neon);
-            box-shadow: var(--border-glow);
             padding: 40px 20px;
             position: relative;
         }
@@ -150,6 +170,31 @@
             border: 1px solid var(--cyan-neon);
         }
 
+        /* CIRCULAR PROFILE PICTURE STYLES */
+        .profile-pic-container {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 20px auto;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--pink-neon);
+            background: #000;
+            display: block;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+            border-color: var(--cyan-neon);
+        }
+
         .hero h1 {
             color: var(--pink-neon);
             font-size: 2.5rem;
@@ -164,9 +209,10 @@
             margin-bottom: 20px;
         }
 
+        /* ==================== BUTTONS ==================== */
         .cyber-btn {
             display: inline-block;
-            background: transparent;
+            background: #000;
             color: var(--pink-neon);
             border: 2px solid var(--pink-neon);
             padding: 12px 25px;
@@ -174,21 +220,25 @@
             font-weight: bold;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: 0.3s;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
             margin: 5px;
             text-align: center;
+            box-shadow: none !important;
+            text-shadow: none !important;
+            white-space: normal;
+            word-break: break-word;
+            max-width: 100%;
         }
 
         .cyber-btn:hover {
             background: var(--pink-neon);
             color: #000;
-            box-shadow: 0 0 15px var(--pink-neon);
         }
 
         /* ==================== SECTIONS ==================== */
         section {
-            padding: 45px 0;
+            padding: 40px 0;
         }
 
         .section-title {
@@ -202,23 +252,25 @@
         /* 4-Box Responsive Grid Layout */
         .grid-layout-4 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
 
         .cyber-card {
             background: var(--card-bg);
-            border: 1px solid var(--pink-neon);
+            border: 1.5px solid var(--pink-neon);
             padding: 22px;
             position: relative;
-            box-shadow: var(--border-glow);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            word-break: break-word;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .cyber-card:hover {
             transform: translateY(-5px);
             border-color: var(--cyan-neon);
-            box-shadow: var(--cyan-glow);
         }
 
         .cyber-card h3 {
@@ -232,7 +284,186 @@
             bottom: 8px;
             right: 12px;
             font-size: 0.7rem;
-            color: rgba(209, 247, 255, 0.4);
+            color: rgba(209, 247, 255, 0.5);
+        }
+
+        /* ==================== WORK PROOF IMAGE STYLES ==================== */
+        .work-card {
+            cursor: pointer;
+        }
+
+        .work-img-box {
+            width: 100%;
+            height: 160px;
+            background: #000;
+            border: 1px solid var(--cyan-neon);
+            margin-bottom: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .work-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .cyber-card:hover .work-img-box img {
+            transform: scale(1.08);
+        }
+
+        /* ==================== POPUP LIGHTBOX MODAL ==================== */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(11, 12, 16, 0.96);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .lightbox-content {
+            background: var(--card-bg);
+            border: 2px solid var(--pink-neon);
+            padding: 25px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            scrollbar-width: thin;
+            scrollbar-color: var(--pink-neon) #13141c;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            color: var(--pink-neon);
+            font-size: 0.85rem;
+            font-weight: bold;
+            cursor: pointer;
+            border: 1px solid var(--pink-neon);
+            padding: 4px 10px;
+            background: #000;
+            z-index: 10;
+        }
+
+        .lightbox-close:hover {
+            background: var(--pink-neon);
+            color: #000;
+        }
+
+        .category-modal-header {
+            color: var(--pink-neon);
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--pink-neon);
+            padding-bottom: 8px;
+        }
+
+        /* Thumbnail Grid Inside Modal */
+        .thumbs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .thumb-item {
+            background: #000;
+            border: 1.5px solid var(--pink-neon);
+            padding: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .thumb-item img {
+            width: 100%;
+            height: 95px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .thumb-item:hover {
+            border-color: var(--cyan-neon);
+            transform: scale(1.05);
+        }
+
+        /* CLICKED FULL-SIZE BOX VIEW AREA */
+        .full-view-box {
+            background: #000;
+            border: 1.5px solid var(--cyan-neon);
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .full-view-box img {
+            max-width: 100%;
+            max-height: 420px;
+            object-fit: contain; /* UNCROPPED FULL SIZE */
+            border: 1px solid var(--pink-neon);
+            display: block;
+            margin: 0 auto 12px auto;
+        }
+
+        .full-view-caption {
+            background: rgba(19, 20, 28, 0.95);
+            border: 1px solid var(--cyan-neon);
+            color: var(--cyan-neon);
+            padding: 10px 15px;
+            display: inline-block;
+            font-size: 0.95rem;
+            font-weight: bold;
+        }
+
+        .full-view-controls {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* MOUSE POINT FLOATING HOVER POPUP (UNCROPPED FIXED) */
+        .mouse-hover-popup {
+            display: none;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            background: #000;
+            border: 2px solid var(--cyan-neon);
+            padding: 10px;
+            max-width: 300px;
+            width: 300px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.95);
+        }
+
+        .mouse-hover-popup img {
+            width: 100%;
+            height: auto;
+            max-height: 320px;
+            object-fit: contain; /* UNCROPPED FULL SIZE FOR HOVER */
+            border: 1px solid var(--pink-neon);
+            display: block;
+            margin-bottom: 8px;
+            background: #000;
+        }
+
+        .hover-popup-caption {
+            color: var(--cyan-neon);
+            font-size: 0.85rem;
+            font-weight: bold;
+            background: rgba(19, 20, 28, 0.95);
+            padding: 6px 10px;
+            border: 1px solid var(--pink-neon);
+            text-align: center;
         }
 
         /* ==================== SKILLS BAR ==================== */
@@ -244,18 +475,20 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 5px;
+            font-weight: bold;
+            flex-wrap: wrap;
+            gap: 5px;
         }
 
         .skill-bar {
-            height: 10px;
-            background: #222;
+            height: 12px;
+            background: #111;
             border: 1px solid var(--cyan-neon);
         }
 
         .skill-fill {
             height: 100%;
             background: var(--cyan-neon);
-            box-shadow: var(--cyan-glow);
             width: 0%;
             transition: width 1.5s ease-in-out;
         }
@@ -272,19 +505,34 @@
             align-items: center;
             justify-content: center;
             background: #000;
-            border: 1px solid var(--pink-neon);
+            border: 1.5px solid var(--pink-neon);
             padding: 12px;
             color: var(--text-color);
             font-weight: bold;
             letter-spacing: 1px;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: none !important;
+            text-shadow: none !important;
+            word-break: break-word;
+            gap: 10px;
+        }
+
+        .social-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--pink-neon);
+            transition: fill 0.3s ease;
+            flex-shrink: 0;
         }
 
         .social-btn:hover {
             border-color: var(--cyan-neon);
-            color: var(--cyan-neon);
-            box-shadow: var(--cyan-glow);
-            background: #111;
+            color: #000;
+            background: var(--cyan-neon);
+        }
+
+        .social-btn:hover svg {
+            fill: #000;
         }
 
         /* ==================== FOOTER ==================== */
@@ -292,15 +540,125 @@
             background: #050608;
             border-top: 2px solid var(--pink-neon);
             text-align: center;
-            padding: 20px 0;
+            padding: 20px 10px;
             margin-top: 30px;
             font-size: 0.9rem;
             color: var(--cyan-neon);
         }
 
+        /* ==================== RESPONSIVE MEDIA QUERIES ==================== */
+
+        @media (max-width: 992px) {
+            .grid-layout-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
-            .nav-container { flex-direction: column; gap: 10px; }
-            .hero h1 { font-size: 1.8rem; }
+            .container {
+                padding: 0 15px;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: 12px;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .typewriter-text {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-pic-container {
+                width: 110px;
+                height: 110px;
+                margin-bottom: 15px;
+            }
+
+            .grid-layout-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 40px 0 20px;
+            }
+
+            .hero-box {
+                padding: 30px 12px;
+            }
+
+            .hero-box::after {
+                font-size: 0.7rem;
+                right: 10px;
+                top: -10px;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+            }
+
+            .typewriter-text {
+                font-size: 0.95rem;
+                min-height: 45px;
+            }
+
+            .cyber-btn {
+                width: 100%;
+                margin: 5px 0;
+                font-size: 0.85rem;
+                padding: 10px 12px;
+            }
+
+            .brand {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                gap: 8px;
+                font-size: 0.8rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .cyber-card {
+                padding: 16px;
+            }
+
+            .thumbs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mouse-hover-popup {
+                max-width: 250px;
+                width: 250px;
+            }
         }
     </style>
 </head>
@@ -315,6 +673,7 @@
             <ul class="nav-links">
                 <li><a href="#about">// ABOUT</a></li>
                 <li><a href="#skills">// SKILLS</a></li>
+                <li><a href="#works">// WORKS</a></li>
                 <li><a href="#hobbies">// INTERESTS</a></li>
                 <li><a href="#social">// SOCIALS</a></li>
                 <li><a href="#contact">// CONTACT</a></li>
@@ -327,13 +686,19 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-box">
+                
+                <!-- CIRCULAR PROFILE PICTURE WITH UNCROPPED HOVER & CLICK FULL VIEW -->
+                <div class="profile-pic-container" id="profilePicContainer">
+                    <img id="mainProfilePic" src="https://raw.githubusercontent.com/tariqmahmud0/tariqmahmudsiddiqui/refs/heads/main/mypicture.jpg" alt="Tariq Mahmud Siddiqui" class="profile-pic">
+                </div>
+
                 <h1>TARIQ MAHMUD SIDDIQUI</h1>
                 <div class="typewriter-text" id="typewriter"></div>
-                <p style="margin-bottom: 20px; color: #a0aab0;">
+                <p style="margin-bottom: 20px; color: #a0aab0; font-size: 0.95rem;">
                     রাজশাহী বিশ্ববিদ্যালয়ের ফাইন্যান্সের শিক্ষার্থী। অর্থায়ন, ডাটা অ্যানালিটিক্স এবং ক্রিয়েটিভ ফ্রন্টএন্ড অ্যান্ড গ্রাফিক্স ডিজাইনের এক মেলবন্ধন।
                 </p>
-                <a href="#contact" class="cyber-btn">SEND_SECRET_LETTER</a>
-                <a href="#social" class="cyber-btn" style="border-color: var(--cyan-neon); color: var(--cyan-neon);">ALL_SOCIALS</a>
+                <a href="#works" class="cyber-btn">VIEW_MY_WORKS</a>
+                <a href="#contact" class="cyber-btn" style="border-color: var(--cyan-neon); color: var(--cyan-neon);">SECRET_LETTER</a>
             </div>
         </section>
 
@@ -344,25 +709,33 @@
             <h2 class="section-title">01. ABOUT_ME <span>[SYSTEM_PROFILE]</span></h2>
             <div class="grid-layout-4">
                 <div class="cyber-card">
-                    <h3>01 // EDUCATION</h3>
-                    <p><strong>Major:</strong> Finance (BBA)</p>
-                    <p><strong>University:</strong> Rajshahi University</p>
+                    <div>
+                        <h3>01 // EDUCATION</h3>
+                        <p><strong>Major:</strong> Finance (BBA)</p>
+                        <p><strong>University:</strong> Rajshahi University</p>
+                    </div>
                     <span class="card-tag">STUDYING</span>
                 </div>
                 <div class="cyber-card">
-                    <h3>02 // ANALYTICS</h3>
-                    <p>ফাইন্যান্সিয়াল মডেলিং ও ডাটা অ্যানালিটিক্স ব্যবহার করে বিজনেস ডাটা এনালাইসিসে আগ্রহী।</p>
+                    <div>
+                        <h3>02 // ANALYTICS</h3>
+                        <p>ফাইন্যান্সিয়াল মডেলিং ও ডাটা অ্যানালিটিক্স ব্যবহার করে বিজনেস ডাটা এনালাইসিসে আগ্রহী।</p>
+                    </div>
                     <span class="card-tag">FIN_TECH</span>
                 </div>
                 <div class="cyber-card">
-                    <h3>03 // CREATIVE</h3>
-                    <p>ফ্রন্টএন্ড ডেভেলপমেন্ট, গ্রাফিক্স ডিজাইন এবং ফটোগ্রাফির মাধ্যমে নতুন ভিজ্যুয়াল আর্ট তৈরি করি।</p>
+                    <div>
+                        <h3>03 // CREATIVE</h3>
+                        <p>ফ্রন্টএন্ড ডেভেলপমেন্ট, গ্রাফিক্স ডিজাইন এবং ফটোগ্রাফির মাধ্যমে নতুন ভিজ্যুয়াল আর্ট তৈরি করি।</p>
+                    </div>
                     <span class="card-tag">DESIGNER</span>
                 </div>
                 <div class="cyber-card">
-                    <h3>04 // IDENTITY</h3>
-                    <p><strong>Location:</strong> Rajshahi, BD</p>
-                    <p><strong>Email:</strong> tariqmahmud.rc621@gmail.com</p>
+                    <div>
+                        <h3>04 // IDENTITY</h3>
+                        <p><strong>Location:</strong> Rajshahi, BD</p>
+                        <p><strong>Email:</strong> tariqmahmud.rc621@gmail.com</p>
+                    </div>
                     <span class="card-tag">LOCATION</span>
                 </div>
             </div>
@@ -410,23 +783,85 @@
             </div>
         </section>
 
+        <!-- WORK SHOWCASE WITH POPUP GALLERY -->
+        <section id="works">
+            <h2 class="section-title">03. WORK_SHOWCASE <span>[CLICK_CATEGORY_TO_EXPLORE]</span></h2>
+            <div class="grid-layout-4">
+                
+                <!-- Category 1: Graphics Design (15 Items Inside) -->
+                <div class="cyber-card work-card" onclick="openCategoryModal('graphics')">
+                    <div>
+                        <div class="work-img-box">
+                            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80" alt="Graphics Design Work">
+                        </div>
+                        <h3>GRAPHICS & UI DESIGN</h3>
+                        <p style="font-size: 0.88rem; margin-bottom: 10px;">ব্র্যান্ডিং, সোশ্যাল মিডিয়া পোস্টার, ব্যানার ও ইউজার ইন্টারফেস ডিজাইনের ১৫টি প্রজেক্ট প্রুফ।</p>
+                    </div>
+                    <span class="card-tag">[15 ITEMS // CLICK TO VIEW]</span>
+                </div>
+
+                <!-- Category 2: Photography Gallery -->
+                <div class="cyber-card work-card" onclick="openCategoryModal('photography')">
+                    <div>
+                        <div class="work-img-box">
+                            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80" alt="Photography Work">
+                        </div>
+                        <h3>PHOTOGRAPHY GALLERY</h3>
+                        <p style="font-size: 0.88rem; margin-bottom: 10px;">পোর্ট্রেট, স্ট্রিট এবং ল্যান্ডস্কেপ ফটোগ্রাফির কাস্টম ক্যাপচারকৃত ছবির গ্যালারি।</p>
+                    </div>
+                    <span class="card-tag">[4 ITEMS // CLICK TO VIEW]</span>
+                </div>
+
+                <!-- Category 3: Frontend Web Projects -->
+                <div class="cyber-card work-card" onclick="openCategoryModal('frontend')">
+                    <div>
+                        <div class="work-img-box">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="Frontend Work">
+                        </div>
+                        <h3>FRONTEND PROJECTS</h3>
+                        <p style="font-size: 0.88rem; margin-bottom: 10px;">HTML5, CSS3 এবং JS ব্যবহার করে তৈরি করা লাইভ ওয়েবসাইট ও প্রজেক্টসমূহ।</p>
+                    </div>
+                    <span class="card-tag">[3 ITEMS // CLICK TO VIEW]</span>
+                </div>
+
+                <!-- Category 4: Financial Analytics -->
+                <div class="cyber-card work-card" onclick="openCategoryModal('finance')">
+                    <div>
+                        <div class="work-img-box">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Financial Analytics Work">
+                        </div>
+                        <h3>FINANCIAL ANALYTICS</h3>
+                        <p style="font-size: 0.88rem; margin-bottom: 10px;">ফাইন্যান্সিয়াল মডেলিং, এক্সেল ডাটা ড্যাশবোর্ড ও এনালাইসিস রিপোর্টসমূহ।</p>
+                    </div>
+                    <span class="card-tag">[3 ITEMS // CLICK TO VIEW]</span>
+                </div>
+
+            </div>
+        </section>
+
         <!-- Hobbies & Interests Section (4 Boxes Grid) -->
         <section id="hobbies">
-            <h2 class="section-title">03. INTERESTS & HOBBIES <span>[PERSONAL_LOGS]</span></h2>
+            <h2 class="section-title">04. INTERESTS & HOBBIES <span>[PERSONAL_LOGS]</span></h2>
             <div class="grid-layout-4">
                 <div class="cyber-card">
-                    <h3>⚽ SPORTS</h3>
-                    <p>ফুটবল এবং ব্যাডমিন্টন খেলতে অনেক পছন্দ করি। খেলাধুলা আমার প্রধান আউটডোর এক্টিভিটি।</p>
+                    <div>
+                        <h3>⚽ SPORTS</h3>
+                        <p>ফুটবল এবং ব্যাডমিন্টন খেলতে অনেক পছন্দ করি। খেলাধুলা আমার প্রধান আউটডোর এক্টিভিটি।</p>
+                    </div>
                     <span class="card-tag">GAMES</span>
                 </div>
                 <div class="cyber-card">
-                    <h3>✈️ TRAVELING</h3>
-                    <p>নতুন নতুন স্থান ভ্রমণ করা এবং প্রকৃতির সৌন্দর্য ক্যামেরাবন্দী করা আমার পছন্দের কাজ।</p>
+                    <div>
+                        <h3>✈️ TRAVELING</h3>
+                        <p>নতুন নতুন স্থান ভ্রমণ করা এবং প্রকৃতির সৌন্দর্য ক্যামেরাবন্দী করা আমার পছন্দের কাজ।</p>
+                    </div>
                     <span class="card-tag">EXPLORE</span>
                 </div>
                 <div class="cyber-card">
-                    <h3>🍔 FOODIE</h3>
-                    <p>বিভিন্ন সুস্বাদু দেশি-বিদেশি খাবার ট্রাই করতে এবং ফুড এক্সপ্লোর করতে ভালো লাগে।</p>
+                    <div>
+                        <h3>🍔 FOODIE</h3>
+                        <p>বিভিন্ন সুস্বাদু দেশি-বিদেশি খাবার ট্রাই করতে এবং ফুড এক্সপ্লোর করতে ভালো লাগে।</p>
+                    </div>
                     <span class="card-tag">CUISINE</span>
                 </div>
                 <div class="cyber-card">
@@ -439,56 +874,114 @@
 
         <!-- Social Media Links Section -->
         <section id="social">
-            <h2 class="section-title">04. SOCIAL_NETWORK <span>[CONNECT]</span></h2>
+            <h2 class="section-title">05. SOCIAL_NETWORK <span>[CONNECT]</span></h2>
             <div class="cyber-card" style="margin-bottom: 25px;">
-                <p style="margin-bottom: 15px; text-align: center; color: var(--cyan-neon);">
+                <p style="margin-bottom: 15px; text-align: center; color: var(--cyan-neon); font-size: 0.95rem;">
                     আমার সাথে যেকোনো সোশ্যাল মিডিয়ায় যুক্ত হতে নিচের লিংকগুলোতে ক্লিক করুন:
                 </p>
                 <div class="social-grid">
-                    <a href="https://www.facebook.com/tariqmahmudsiddiqui" target="_blank" rel="noopener noreferrer" class="social-btn">📘 FACEBOOK</a>
-                    <a href="https://m.me/tariqmahmudsiddiqui" target="_blank" rel="noopener noreferrer" class="social-btn" style="border-color: var(--cyan-neon); color: var(--cyan-neon);">💬 MESSENGER</a>
-                    <a href="https://www.linkedin.com/in/tariqmahmud0" target="_blank" rel="noopener noreferrer" class="social-btn">🔗 LINKEDIN</a>
-                    <a href="https://github.com/tariqmahmud0" target="_blank" rel="noopener noreferrer" class="social-btn">💻 GITHUB</a>
-                    <a href="https://x.com/tariqmahmud0" target="_blank" rel="noopener noreferrer" class="social-btn">🐦 X (TWITTER)</a>
-                    <a href="https://www.youtube.com/@tariqmahmud0" target="_blank" rel="noopener noreferrer" class="social-btn">📺 YOUTUBE</a>
-                    <a href="https://medium.com/@tariqmahmud0" target="_blank" rel="noopener noreferrer" class="social-btn">📝 MEDIUM</a>
-                    <a href="https://www.pinterest.com/tariqmahmud0" target="_blank" rel="noopener noreferrer" class="social-btn">📌 PINTEREST</a>
-                    <a href="https://www.reddit.com/user/tariqmahmud0" target="_blank" rel="noopener noreferrer" class="social-btn">🤖 REDDIT</a>
+                    
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/tariqmahmudsiddiqui" target="_blank" rel="noopener noreferrer" class="social-btn">
+                        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        FACEBOOK
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/tariqmahmud0" target="_blank" rel="noopener noreferrer" class="social-btn">
+                        <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        LINKEDIN
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/tariqmahmud0" target="_blank" rel="noopener noreferrer" class="social-btn">
+                        <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        GITHUB
+                    </a>
+
+                    <!-- X (Twitter) -->
+                    <a href="https://x.com/tariqmahmud0" target="_blank" rel="noopener noreferrer" class="social-btn">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        X (TWITTER)
+                    </a>
+
+                    <!-- YouTube -->
+                    <a href="https://www.youtube.com/@tariqmahmud0" target="_blank" rel="noopener noreferrer" class="social-btn">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.016 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        YOUTUBE
+                    </a>
+
+                    <!-- Pinterest -->
+                    <a href="https://www.pinterest.com/tariqmahmud0" target="_blank" rel="noopener noreferrer" class="social-btn">
+                        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.48 2.169 1.658 2.169 1.99 0 3.523-2.1 3.523-5.127 0-2.681-1.928-4.558-4.68-4.558-3.189 0-5.061 2.392-5.061 4.862 0 .964.372 1.997.836 2.561.092.112.105.21.078.324-.085.352-.276 1.127-.313 1.285-.05.207-.168.251-.387.151-1.442-.671-2.344-2.78-2.344-4.475 0-3.642 2.646-6.988 7.632-6.988 4.007 0 7.12 2.856 7.12 6.671 0 3.981-2.511 7.185-5.995 7.185-1.171 0-2.272-.609-2.649-1.373 0 0-.58 2.209-.72 2.748-.261 1.006-.968 2.264-1.44 3.01 1.137.35 2.343.541 3.593.541 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+                        PINTEREST
+                    </a>
+
                 </div>
             </div>
         </section>
 
         <!-- Direct Contact & Anonymous Letter Section -->
         <section id="contact">
-            <h2 class="section-title">05. DIRECT_MESSAGE <span>[TRANSMIT]</span></h2>
+            <h2 class="section-title">06. DIRECT_MESSAGE <span>[TRANSMIT]</span></h2>
             <div class="cyber-card" style="text-align: center;">
                 
-                <p style="margin-bottom: 15px; color: var(--pink-neon); font-size: 1.1rem; font-weight: bold;">
+                <p style="margin-bottom: 15px; color: var(--pink-neon); font-size: 1rem; font-weight: bold;">
                     ✉️ নিজের নাম গোপন রেখে চিঠি পাঠাতে পারো:
                 </p>
                 
                 <!-- Anonymous Letter Button (Chithi.me) -->
-                <a href="https://chithi.me/sendmeyourmsg" target="_blank" rel="noopener noreferrer" class="cyber-btn" style="width: 100%; display: block; margin-bottom: 25px; background: var(--pink-neon); color: #000; box-shadow: 0 0 15px var(--pink-neon);">
+                <a href="https://chithi.me/sendmeyourmsg" target="_blank" rel="noopener noreferrer" class="cyber-btn" style="width: 100%; display: block; margin-bottom: 25px; background: var(--pink-neon); color: #000;">
                     ✉️ SEND ANONYMOUS LETTER (CHITHI.ME)
                 </a>
 
-                <p style="margin-bottom: 15px; color: var(--cyan-neon); font-size: 1.1rem;">
-                    অথবা সরাসরি কথা বলতে ও ইমেইল পাঠাতে ক্লিক করুন:
+                <p style="margin-bottom: 15px; color: var(--cyan-neon); font-size: 1rem;">
+                    অথবা সরাসরি ইমেইল পাঠাতে ক্লিক করুন:
                 </p>
 
-                <!-- Facebook Messenger Direct Button -->
-                <a href="https://m.me/tariqmahmudsiddiqui" target="_blank" rel="noopener noreferrer" class="cyber-btn" style="width: 100%; display: block; margin-bottom: 15px; background: var(--cyan-neon); color: #000;">
-                    💬 CHAT ON FACEBOOK MESSENGER
-                </a>
-
                 <!-- Safe Direct Email Link -->
-                <a href="mailto:tariqmahmud.rc621@gmail.com?subject=Portfolio%20Contact%20Message" class="cyber-btn" style="width: 100%; display: block;">
+                <a href="mailto:tariqmahmud.rc621@gmail.com?subject=Portfolio%20Contact%20Message" class="cyber-btn" style="width: 100%; display: block; border-color: var(--cyan-neon); color: var(--cyan-neon);">
                     📧 SEND EMAIL TO tariqmahmud.rc621@gmail.com
                 </a>
 
             </div>
         </section>
 
+    </div>
+
+    <!-- POPUP CATEGORY MODAL ELEMENT -->
+    <div id="categoryModal" class="lightbox-modal">
+        <div class="lightbox-content">
+            <span class="lightbox-close" id="modalClose">[ X ] CLOSE</span>
+            <h3 id="modalCategoryTitle" class="category-modal-header">WORK PROOFS</h3>
+            
+            <!-- CLICKED FULL-SIZE BOX VIEW AREA (Shown when clicked) -->
+            <div id="fullViewContainer" style="display: none;">
+                <div class="full-view-box">
+                    <img id="fullViewImg" src="" alt="Full View Work">
+                    <div id="fullViewCaption" class="full-view-caption"></div>
+                </div>
+                <div class="full-view-controls">
+                    <button class="cyber-btn" id="fullViewPrev" style="margin:0;">&lt;&lt; PREV</button>
+                    <button class="cyber-btn" id="fullViewBack" style="margin:0; border-color: var(--pink-neon); color: var(--pink-neon);">GRID VIEW</button>
+                    <button class="cyber-btn" id="fullViewNext" style="margin:0; border-color: var(--cyan-neon); color: var(--cyan-neon);">&gt;&gt; NEXT</button>
+                </div>
+            </div>
+
+            <!-- GRID VIEW AREA (Shown initially) -->
+            <div id="gridViewContainer">
+                <p style="font-size: 0.85rem; color: var(--cyan-neon); margin-bottom: 10px; text-align: center;">
+                    💡 মাউস আনলে হভার প্রিভিউ দেখাবে, এবং ছবিতে ক্লিক করলে বড় বক্স ভিউ ওপেন হবে:
+                </p>
+                <div id="thumbsGrid" class="thumbs-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MOUSE POINT FLOATING HOVER POPUP ELEMENT (UNCROPPED PREVIEW) -->
+    <div id="mouseHoverPopup" class="mouse-hover-popup">
+        <img id="hoverPopupImg" src="" alt="Hover Preview">
+        <div id="hoverPopupCaption" class="hover-popup-caption"></div>
     </div>
 
     <div class="hazard-bar"></div>
@@ -533,12 +1026,6 @@
             }
         }
 
-        // Initialize script on page load
-        document.addEventListener("DOMContentLoaded", () => {
-            type();
-            animateSkills();
-        });
-
         // Skill Bar Animation Logic
         function animateSkills() {
             const skillFills = document.querySelectorAll(".skill-fill");
@@ -547,6 +1034,311 @@
                 fill.style.width = targetWidth;
             });
         }
+
+        // ==================== PROFILE PICTURE HOVER UNCROPPED PREVIEW ====================
+        const profilePicContainer = document.getElementById('profilePicContainer');
+        const mainProfilePic = document.getElementById('mainProfilePic');
+
+        if (profilePicContainer && mainProfilePic) {
+            profilePicContainer.addEventListener('mouseenter', (e) => {
+                hoverPopupImg.src = mainProfilePic.src;
+                hoverPopupCaption.textContent = "👤 TARIQ MAHMUD SIDDIQUI // FULL PROFILE VIEW";
+                mouseHoverPopup.style.display = 'block';
+                positionPopup(e);
+            });
+
+            profilePicContainer.addEventListener('mousemove', (e) => {
+                positionPopup(e);
+            });
+
+            profilePicContainer.addEventListener('mouseleave', () => {
+                mouseHoverPopup.style.display = 'none';
+            });
+
+            profilePicContainer.addEventListener('click', (e) => {
+                hoverPopupImg.src = mainProfilePic.src;
+                hoverPopupCaption.textContent = "👤 TARIQ MAHMUD SIDDIQUI // FULL PROFILE VIEW";
+                mouseHoverPopup.style.display = 'block';
+                positionPopup(e);
+            });
+        }
+
+        // ==================== MULTI-IMAGE CATEGORY DATA ====================
+        const categoryData = {
+            graphics: {
+                title: "GRAPHICS & UI DESIGN PROOFS (15 ITEMS)",
+                items: [
+                    {
+                        img: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1000&q=80",
+                        caption: "🎨 01 // Cyberpunk Music Concert Festival Poster Design"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1000&q=80",
+                        caption: "📱 02 // Crypto Wallet Mobile App UI/UX Dark Mode Concept"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?auto=format&fit=crop&w=1000&q=80",
+                        caption: "📢 03 // Social Media Promotional Marketing Banner Design"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1542744094-3a31b272c490?auto=format&fit=crop&w=1000&q=80",
+                        caption: "🖥️ 04 // Corporate Brand Identity & Vector Logo Package"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1000&q=80",
+                        caption: "🏎️ 05 // Retro-Futuristic Cyberpunk Car Poster Art"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1000&q=80",
+                        caption: "🌌 06 // Abstract 3D Neon Geometry Wallpaper Art"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80",
+                        caption: "🏡 07 // Minimalist Architectural Firm Brochure & Logo"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80",
+                        caption: "📊 08 // SaaS Web Dashboard UI/UX Light & Dark Layout"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1000&q=80",
+                        caption: "🛒 09 // E-Commerce Store UI Design & Banner Set"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1000&q=80",
+                        caption: "🎮 10 // Esports Tournament Poster & Stream Overlay Design"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1000&q=80",
+                        caption: "🔐 11 // Cyber Security Tech Event Banner & Flyer"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1000&q=80",
+                        caption: "🕹️ 12 // Retro Tech & Arcade Gaming Branding Kit"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=1000&q=80",
+                        caption: "🎨 13 // Neon Typography & Digital Vector Art Design"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1000&q=80",
+                        caption: "📐 14 // Wireframing & Prototyping Mobile App Design"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1000&q=80",
+                        caption: "⚡ 15 // Energy Drink Can Packaging & Product Label Art"
+                    }
+                ]
+            },
+            photography: {
+                title: "PHOTOGRAPHY GALLERY PROOFS (4 ITEMS)",
+                items: [
+                    {
+                        img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1000&q=80",
+                        caption: "📷 Frame 01: Street & Urban Portrait Photography"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1000&q=80",
+                        caption: "🌅 Frame 02: Landscape & Nature Horizon Shot"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80",
+                        caption: "🏞️ Frame 03: Mountain Reflection & Water Photography"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80",
+                        caption: "🌌 Frame 04: Night Sky & Astrophotography Shot"
+                    }
+                ]
+            },
+            frontend: {
+                title: "FRONTEND WEB PROJECTS PROOFS (3 ITEMS)",
+                items: [
+                    {
+                        img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1000&q=80",
+                        caption: "💻 Web Project 01: Cyberpunk Interactive Web Portfolio"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80",
+                        caption: "📊 Web Project 02: Business Analytics Dashboard UI"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1000&q=80",
+                        caption: "🛒 Web Project 03: E-Commerce Responsive Frontend Design"
+                    }
+                ]
+            },
+            finance: {
+                title: "FINANCIAL DATA ANALYTICS PROOFS (3 ITEMS)",
+                items: [
+                    {
+                        img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80",
+                        caption: "📈 Report 01: Financial Valuation & Data Analytics Chart"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&w=1000&q=80",
+                        caption: "📋 Report 02: Excel Financial Modeling & Portfolio Dashboard"
+                    },
+                    {
+                        img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80",
+                        caption: "📑 Report 03: Corporate Financial Performance Report"
+                    }
+                ]
+            }
+        };
+
+        // Modal Elements
+        const modal = document.getElementById('categoryModal');
+        const modalTitle = document.getElementById('modalCategoryTitle');
+        const thumbsGrid = document.getElementById('thumbsGrid');
+        const modalClose = document.getElementById('modalClose');
+
+        // Full View Box Elements
+        const gridViewContainer = document.getElementById('gridViewContainer');
+        const fullViewContainer = document.getElementById('fullViewContainer');
+        const fullViewImg = document.getElementById('fullViewImg');
+        const fullViewCaption = document.getElementById('fullViewCaption');
+        const fullViewPrev = document.getElementById('fullViewPrev');
+        const fullViewNext = document.getElementById('fullViewNext');
+        const fullViewBack = document.getElementById('fullViewBack');
+
+        // Floating Mouse Hover Popup Elements
+        const mouseHoverPopup = document.getElementById('mouseHoverPopup');
+        const hoverPopupImg = document.getElementById('hoverPopupImg');
+        const hoverPopupCaption = document.getElementById('hoverPopupCaption');
+
+        let currentActiveItems = [];
+        let activeFullIndex = 0;
+
+        function openCategoryModal(categoryKey) {
+            const data = categoryData[categoryKey];
+            if (!data) return;
+
+            currentActiveItems = data.items;
+            modalTitle.textContent = data.title;
+            thumbsGrid.innerHTML = '';
+
+            // Reset View to Grid Mode
+            showGridView();
+
+            // Render Thumbnails
+            currentActiveItems.forEach((item, idx) => {
+                const thumb = document.createElement('div');
+                thumb.className = 'thumb-item';
+                thumb.innerHTML = `<img src="${item.img}" alt="Thumbnail ${idx}">`;
+
+                // 1. HOVER EVENT -> Floating Mouse Point Tooltip
+                thumb.addEventListener('mouseenter', (e) => {
+                    hoverPopupImg.src = item.img;
+                    hoverPopupCaption.textContent = item.caption;
+                    mouseHoverPopup.style.display = 'block';
+                    positionPopup(e);
+                });
+
+                thumb.addEventListener('mousemove', (e) => {
+                    positionPopup(e);
+                });
+
+                thumb.addEventListener('mouseleave', () => {
+                    mouseHoverPopup.style.display = 'none';
+                });
+
+                // 2. CLICK EVENT -> Opens Large Full View Box!
+                thumb.addEventListener('click', () => {
+                    mouseHoverPopup.style.display = 'none'; // Hide floating tooltip
+                    openFullViewBox(idx);
+                });
+
+                thumbsGrid.appendChild(thumb);
+            });
+
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Show Full View Box
+        function openFullViewBox(idx) {
+            activeFullIndex = idx;
+            updateFullViewContent();
+            gridViewContainer.style.display = 'none';
+            fullViewContainer.style.display = 'block';
+        }
+
+        // Return to Thumbnails Grid
+        function showGridView() {
+            fullViewContainer.style.display = 'none';
+            gridViewContainer.style.display = 'block';
+        }
+
+        function updateFullViewContent() {
+            const item = currentActiveItems[activeFullIndex];
+            if (item) {
+                fullViewImg.src = item.img;
+                fullViewCaption.textContent = item.caption;
+            }
+        }
+
+        // Full View Nav Controls
+        fullViewPrev.addEventListener('click', () => {
+            activeFullIndex = (activeFullIndex - 1 + currentActiveItems.length) % currentActiveItems.length;
+            updateFullViewContent();
+        });
+
+        fullViewNext.addEventListener('click', () => {
+            activeFullIndex = (activeFullIndex + 1) % currentActiveItems.length;
+            updateFullViewContent();
+        });
+
+        fullViewBack.addEventListener('click', showGridView);
+
+        // Position Floating Popup Next to Cursor Safely
+        function positionPopup(e) {
+            let popupWidth = 300;
+            let popupHeight = 300;
+            let x = e.clientX + 15;
+            let y = e.clientY + 15;
+
+            if (x + popupWidth > window.innerWidth) {
+                x = e.clientX - popupWidth - 10;
+            }
+            if (y + popupHeight > window.innerHeight) {
+                y = e.clientY - popupHeight - 10;
+            }
+
+            if (x < 10) x = 10;
+            if (y < 10) y = 10;
+
+            mouseHoverPopup.style.left = x + 'px';
+            mouseHoverPopup.style.top = y + 'px';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            mouseHoverPopup.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        modalClose.addEventListener('click', closeModal);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (modal.style.display === 'flex') {
+                if (e.key === 'Escape') closeModal();
+                if (fullViewContainer.style.display === 'block') {
+                    if (e.key === 'ArrowLeft') fullViewPrev.click();
+                    if (e.key === 'ArrowRight') fullViewNext.click();
+                }
+            }
+        });
+
+        // Initialize script on page load
+        document.addEventListener("DOMContentLoaded", () => {
+            type();
+            animateSkills();
+        });
     </script>
 </body>
 </html>
