@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TARIQ MAHMUD SIDDIQUI // CYBER PORTFOLIO</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==================== GLOBAL STYLES ==================== */
+        :root {
+            --bg-color: #0b0c10;
+            --card-bg: #13141c;
+            --pink-neon: #ff2a6d;
+            --cyan-neon: #05d9e8;
+            --text-color: #d1f7ff;
+            --border-glow: 0 0 10px rgba(255, 42, 109, 0.4);
+            --cyan-glow: 0 0 10px rgba(5, 217, 232, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .brand {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+        }
+
+        a {
+            color: var(--cyan-neon);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: var(--pink-neon);
+            text-shadow: 0 0 5px var(--pink-neon);
+        }
+
+        /* Scanline Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background-size: 100% 4px;
+            z-index: 999;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .hazard-bar {
+            height: 15px;
+            background: repeating-linear-gradient(
+                -45deg,
+                var(--pink-neon),
+                var(--pink-neon) 12px,
+                #000 12px,
+                #000 24px
+            );
+            border-top: 1px solid var(--pink-neon);
+            border-bottom: 1px solid var(--pink-neon);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ==================== NAVBAR ==================== */
+        nav {
+            background-color: rgba(19, 20, 28, 0.95);
+            border-bottom: 2px solid var(--pink-neon);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .brand {
+            font-size: 1.2rem;
+            color: var(--pink-neon);
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-shadow: var(--border-glow);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            padding: 70px 0 40px;
+            text-align: center;
+        }
+
+        .hero-box {
+            background: var(--card-bg);
+            border: 2px solid var(--pink-neon);
+            box-shadow: var(--border-glow);
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .hero-box::after {
+            content: 'RU_FINANCE // @tariqmahmud0';
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--bg-color);
+            color: var(--cyan-neon);
+            padding: 0 8px;
+            font-size: 0.8rem;
+            border: 1px solid var(--cyan-neon);
+        }
+
+        .hero h1 {
+            color: var(--pink-neon);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .typewriter-text {
+            color: var(--cyan-neon);
+            font-size: 1.3rem;
+            min-height: 35px;
+            margin-bottom: 20px;
+        }
+
+        .cyber-btn {
+            display: inline-block;
+            background: transparent;
+            color: var(--pink-neon);
+            border: 2px solid var(--pink-neon);
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            margin: 5px;
+            text-align: center;
+        }
+
+        .cyber-btn:hover {
+            background: var(--pink-neon);
+            color: #000;
+            box-shadow: 0 0 15px var(--pink-neon);
+        }
+
+        /* ==================== SECTIONS ==================== */
+        section {
+            padding: 45px 0;
+        }
+
+        .section-title {
+            color: var(--pink-neon);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--cyan-neon);
+            padding-left: 15px;
+        }
+
+        /* 4-Box Responsive Grid */
+        .grid-layout-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .cyber-card {
+            background: var(--card-bg);
+            border: 1px solid var(--pink-neon);
+            padding: 22px;
+            position: relative;
+            box-shadow: var(--border-glow);
+            transition: transform 0.3s ease;
+        }
+
+        .cyber-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--cyan-neon);
+            box-shadow: var(--cyan-glow);
+        }
+
+        .cyber-card h3 {
+            color: var(--cyan-neon);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .card-tag {
+            position: absolute;
+            bottom: 8px;
+            right: 12px;
+            font-size: 0.7rem;
+            color: rgba(209, 247, 255, 0.4);
+        }
+
+        /* ==================== SKILLS BAR ==================== */
+        .skill-item {
+            margin-bottom: 18px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background: #222;
+            border: 1px solid var(--cyan-neon);
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: var(--cyan-neon);
+            box-shadow: var(--cyan-glow);
+            width: 0%;
+            transition: width 1.5s ease-in-out;
+        }
+
+        /* ==================== SOCIAL LINKS ==================== */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            border: 1px solid var(--pink-neon);
+            padding: 12px;
+            color: var(--text-color);
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            border-color: var(--cyan-neon);
+            color: var(--cyan-neon);
+            box-shadow: var(--cyan-glow);
+            background: #111;
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: #050608;
+            border-top: 2px solid var(--pink-neon);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: var(--cyan-neon);
+        }
+
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 10px; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hazard-bar"></div>
+
+    <!-- Nav Bar -->
+    <nav>
+        <div class="container nav-container">
+            <div class="brand">TARIQ_MAHMUD_SIDDIQUI //</div>
+            <ul class="nav-links">
+                <li><a href="#about">// ABOUT</a></li>
+                <li><a href="#skills">// SKILLS</a></li>
+                <li><a href="#hobbies">// INTERESTS</a></li>
+                <li><a href="#contact">// CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-box">
+                <h1>TARIQ MAHMUD SIDDIQUI</h1>
+                <div class="typewriter-text" id="typewriter"></div>
+                <p style="margin-bottom: 20px; color: #a0aab0;">
+                    রাজশাহী বিশ্ববিদ্যালয়ের ফাইন্যান্সের শিক্ষার্থী। অর্থায়ন, ডাটা অ্যানালিটিক্স এবং ক্রিয়েটিভ ফ্রন্টএন্ড অ্যান্ড গ্রাফিক্স ডিজাইনের এক মেলবন্ধন।
+                </p>
+                <a href="#contact" class="cyber-btn">SEND_SECRET_LETTER</a>
+                <a href="#social" class="cyber-btn" style="border-color: var(--cyan-neon); color: var(--cyan-neon);">ALL_SOCIALS</a>
+            </div>
+        </section>
+
+        <div class="hazard-bar"></div>
+
+        <!-- About Section (4 Boxes) -->
+        <section id="about">
+            <h2 class="section-title">01. ABOUT_ME <span>[SYSTEM_PROFILE]</span></h2>
+            <div class="grid-layout-4">
+                <div class="cyber-card">
+                    <h3>01 // EDUCATION</h3>
+                    <p><strong>Major:</strong> Finance (BBA)</p>
+                    <p><strong>University:</strong> Rajshahi University</p>
+                    <span class="card-tag">STUDYING</span>
+                </div>
+                <div class="cyber-card">
+                    <h3>02 // ANALYTICS</h3>
+                    <p>ফাইন্যান্সিয়াল মডেলিং ও ডাটা অ্যানালিটিক্স ব্যবহার করে বিজনেস ডাটা এনালাইসিসে আগ্রহী।</p>
+                    <span class="card-tag">FIN_TECH</span>
+                </div>
+                <div class="cyber-card">
+                    <h3>03 // CREATIVE</h3>
+                    <p>ফ্রন্টএন্ড ডেভেলপমেন্ট, গ্রাফিক্স ডিজাইন এবং ফটোগ্রাফির মাধ্যমে নতুন ভিজ্যুয়াল আর্ট তৈরি করি।</p>
+                    <span class="card-tag">DESIGNER</span>
+                </div>
+                <div class="cyber-card">
+                    <h3>04 // IDENTITY</h3>
+                    <p><strong>Location:</strong> Rajshahi</p>
+                    <p><strong>Email:</strong> tariqmahmud.rc621@gmail.com</p>
+                    <span class="card-tag">LOCATION</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">02. SKILL_MATRIX <span>[CAPABILITIES]</span></h2>
+            <div class="cyber-card">
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>FINANCIAL TOOLS & MODELING</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>DATA ANALYTICS (MODERATE)</span>
+                        <span>65%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="65%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>GRAPHICS DESIGN</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>FRONTEND DEVELOPMENT (HTML/CSS/JS)</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="75%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>PHOTOGRAPHY</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hobbies & Interests Section (4 Boxes) -->
+        <section id="hobbies">
+            <h2 class="section-title">03. INTERESTS & HOBBIES <span>[PERSONAL_LOGS]</span></h2>
+            <div class="grid-layout-4">
+                <div class="cyber-card">
+                    <h3>⚽ SPORTS</h3>
+                    <p>ফুটবল এবং ব্যাডমিন্টন খেলতে অনেক পছন্দ করি। খেলাধুলা আমার প্রধান আউটডোর এক্টিভিটি।</p>
+                    <span class="card-tag">GAMES</span>
+                </div>
+                <div class="cyber-card">
+                    <h3>✈️ TRAVELING</h3>
+                    <p>নতুন নতুন স্থান ভ্রমণ করা এবং প্রকৃতির সৌন্দর্য ক্যামেরাবন্দী করা আমার পছন্দের কাজ।</p>
+                    <span class="card-tag">EXPLORE</span>
+                </div>
+                <div class="cyber-card">
+                    <h3>🍔 FOODIE</h3>
+                    <p>বিভিন্ন সুস্বাদু দেশি-বিদেশি খাবার ট্রাই করতে এবং ফুড এক্সপ্লোর করতে ভালো লাগে।</p>
+                    <span class="card-tag">CUISINE</span>
+                </div>
+                <div class="cyber-card">
+                    <h3>🎬 CINEMA</h3>
+                    <p>অবসর সময়ে সিনেমা ও সিরিজ দেখা এবং তাদের ভিজ্যুয়াল আর্ট উপভোগ করা আমার শখ।</p>
+                    <span class="card-tag">MOVIES</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media Links Section -->
+        <section id="social">
+            <h2 class="section-title">04. SOCIAL_NETWORK <span>[CONNECT]</span></h2>
+            <div class="cyber-card" style="margin-bottom: 25px;">
+                <p style="margin-bottom: 15px; text-align: center; color: var(--cyan-neon);">
+                    আমার সাথে যেকোনো সোশ্যাল মিডিয়ায় যুক্ত হতে নিচের লিংকগুলোতে ক্লিক করুন:
+                </p>
+                <div class="social-grid">
+                    <a href="https://www.facebook.com/tariqmahmudsiddiqui" target="_blank" rel="noopener noreferrer" class="social-btn">📘 FACEBOOK</a>
+                    <a href="https://m.me/tariqmahmudsiddiqui" target="_blank" rel="noopener noreferrer" class="social-btn" style="border-color: var(--cyan-neon); color: var(--cyan-neon);">💬 MESSENGER</a>
+                    <a href="https://www.linkedin.com/in/tariqmahmud0" target="_blank" rel="noopener noreferrer" class="social-btn">🔗 LINKEDIN</a>
+                    <a href="https://github.com/tariqmahmud0" target="_blank" rel="noopener noreferrer" class="social-btn">💻 GITHUB</a>
+                    <a href="https://x.com/tariqmahmud0" target="_blank" rel="noopener noreferrer" class="social-btn">🐦 X (TWITTER)</a>
+                    <a href="https://www.youtube.com/@tariqmahmud0" target="_blank" rel="noopener noreferrer" class="social-btn">📺 YOUTUBE</a>
+                    <a href="https://medium.com/@tariqmahmud0" target="_blank" rel="noopener noreferrer" class="social-btn">📝 MEDIUM</a>
+                    <a href="https://www.pinterest.com/tariqmahmud0" target="_blank" rel="noopener noreferrer" class="social-btn">📌 PINTEREST</a>
+                    <a href="https://www.reddit.com/user/tariqmahmud0" target="_blank" rel="noopener noreferrer" class="social-btn">🤖 REDDIT</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Direct Contact & Anonymous Letter Section -->
+        <section id="contact">
+            <h2 class="section-title">05. DIRECT_MESSAGE <span>[TRANSMIT]</span></h2>
+            <div class="cyber-card" style="text-align: center;">
+                
+                <p style="margin-bottom: 15px; color: var(--pink-neon); font-size: 1.1rem; font-weight: bold;">
+                    ✉️ নিজের নাম গোপন রেখে চিঠি পাঠাতে পারো:
+                </p>
+                
+                <!-- Anonymous Letter Button (Chithi.me) -->
+                <a href="https://chithi.me/sendmeyourmsg" target="_blank" rel="noopener noreferrer" class="cyber-btn" style="width: 100%; display: block; margin-bottom: 25px; background: var(--pink-neon); color: #000; box-shadow: 0 0 15px var(--pink-neon);">
+                    ✉️ SEND ANONYMOUS LETTER (CHITHI.ME)
+                </a>
+
+                <p style="margin-bottom: 15px; color: var(--cyan-neon); font-size: 1.1rem;">
+                    অথবা সরাসরি কথা বলতে ও ইমেইল পাঠাতে ক্লিক করুন:
+                </p>
+
+                <!-- Messenger Direct Button -->
+                <a href="https://m.me/tariqmahmudsiddiqui" target="_blank" rel="noopener noreferrer" class="cyber-btn" style="width: 100%; display: block; margin-bottom: 15px; background: var(--cyan-neon); color: #000;">
+                    💬 CHAT ON FACEBOOK MESSENGER
+                </a>
+
+                <!-- Safe Direct Email Link to tariqmahmud.rc621@gmail.com -->
+                <a href="mailto:tariqmahmud.rc621@gmail.com?subject=Portfolio%20Contact%20Message" class="cyber-btn" style="width: 100%; display: block;">
+                    📧 SEND EMAIL TO tariqmahmud.rc621@gmail.com
+                </a>
+
+            </div>
+        </section>
+
+    </div>
+
+    <div class="hazard-bar"></div>
+
+    <footer>
+        <p>&copy; 2026 TARIQ MAHMUD SIDDIQUI // ALL RIGHTS RESERVED</p>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // Typewriter Effect
+        const roles = [
+            "BBA IN FINANCE @ RU",
+            "DATA ANALYTICS ENTHUSIAST",
+            "FRONTEND DEVELOPER",
+            "GRAPHIC DESIGNER",
+            "PHOTOGRAPHER"
+        ];
+        
+        let roleIndex = 0;
+        let charIndex = 0;
+        const typewriterElement = document.getElementById("typewriter");
+
+        function type() {
+            if (charIndex < roles[roleIndex].length) {
+                typewriterElement.textContent += roles[roleIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, 80);
+            } else {
+                setTimeout(erase, 1800);
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                typewriterElement.textContent = roles[roleIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, 40);
+            } else {
+                roleIndex = (roleIndex + 1) % roles.length;
+                setTimeout(type, 400);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            type();
+            animateSkills();
+        });
+
+        // Skill Bar Animation
+        function animateSkills() {
+            const skillFills = document.querySelectorAll(".skill-fill");
+            skillFills.forEach(fill => {
+                const targetWidth = fill.getAttribute("data-width");
+                fill.style.width = targetWidth;
+            });
+        }
+    </script>
+</body>
+</html>
